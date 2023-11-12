@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Shadow Generator</title>
+    <link rel="icon" href="icon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Szymon Gniadek">
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="input.css">
+    <link rel="stylesheet" href="shadow.css">
+    <link rel="stylesheet" href="window.css">
+    <link rel="stylesheet" href="contextmenu.css">
+    <link rel="stylesheet" href="css/fontello.css">
+</head>
+<body>
+    <div class="window" id="javascriptError">
+        <h1>ERROR</h1>
+        <p>You must have javascript enabled to have valid program. </p>
+    </div>
+    <!-- CONTEXT MENU -->
+    <div id="contextmenu">
+        <ul id="moveUp"><i class="icon-up-circled"></i>Move Up</ul>
+    </div>
+    <div class="blur" id="javascriptError-background-blur"></div>
+    <!-- Windows -->
+    <div class="window" id="manualGenerator">
+        <div class="windowQuit">X</div>
+        <h1>IMPORT SHADOW</h1>
+        <p>Write a box-shadow command to add it to Box Shadow Generator.</p>
+        <textarea>box-shadow: </textarea>
+        <button id="mgGenerate">Generate</button>
+    </div>
+    <div class="blur" id="background-blur"></div>
+    <!-- Main Content -->
+    <div class="bar">
+            <div class="logo"></div>
+            <ol>Project</ol>
+            <ol>
+            <span>Tools</span>
+                <ul>
+                    <li id="manualGeneratorInit">Import Shadow</li>
+                    <li>Shadow Manipulator</li>
+                </ul>
+            </ol>
+    </div>
+    <div class="main">
+        <div class="sidebar">
+            <h1>SHADOW SETTINGS</h1>
+            <div id="shadow-options"></div>
+            <div class="shadow-list" id="shadow-list"></div>
+            <button class="shadow-list-button" id="clear-shadow-list-button">clear</button>
+            <button class="shadow-list-button" id="add-shadow-button">Add New Shadow</button>
+        </div>
+        <div class="rightbar">
+            <div class="toprightbar">
+                <div class="info"><h1>OUTPUT</h1><p id="box-shadow-info"><span id="shadow-info">box-shadow: 10px 10px 10px 5px rgba(0,0,0,0.75);</span></p><button id="button-copy">Copy</button></div>
+                <div class="preview"><h1>PREVIEW</h1><div class="preview-box"></div></div>
+                <div class="preview-settings">
+                    <h1>PREVIEW SETTINGS</h1>
+                    <p> Box Color: <input type="color" value="#e2b00c" id="box-color"></p>
+                    <p> Background Color: <input type="color" value="#fff8ea" id="background-color"></p>
+                    <p class="preview-attr"><span class="attr-name">Border-radius:</span><input type="range" value="0" max="50" id="border-radius"><input type="number" class="count" value="0"></p>
+                    <p class="preview-attr"><span class="attr-name">Width:</span><input type="range" value="190" max="300" id="preview-width" step="2"><input type="number" class="count" value="190"></p>
+                    <p class="preview-attr"><span class="attr-name">Height:</span><input type="range" value="150" max="300" id="preview-height" step="2"><input type="number" class="count" value="150"></p>
+                    <button id="set-default">SET DEFAULTS SETTINGS</button>
+                </div>
+            </div>
+            <div class="toprightbar">
+                <div class="effects">
+                    <h1>EFFECTS</h1>
+                    <div class="effects-list">
+                    <div class="effect" id="effect-hover">
+                        <div class="effect-img" style="box-shadow: 0px 10px 13px -7px #fff"></div>
+                        <div class="effect-name">Hover</div>
+                    </div>
+                    <div class="effect" id="effect-sides">
+                        <div class="effect-img" style="box-shadow: -10px 0px 13px -7px #fff, 10px 0px 13px -7px #fff"></div>
+                        <div class="effect-name">Sides</div>
+                    </div>
+                    <div class="effect" id="effect-button">
+                        <div class="effect-img" style="box-shadow: inset -1px 3px 8px 5px rgb(255, 151, 31), 2px 5px 16px 0px rgb(255, 174, 0)"></div>
+                        <div class="effect-name">Button</div>
+                    </div>
+                    <div class="effect" id="effect-mirror">
+                        <div class="effect-img" style="box-shadow: inset 2px 2px 2px 2px #ff7e4b, inset 11px 11px 2px 0px #ff9100, inset 20px 20px 2px 1px #ffb517, inset 29px 29px 2px 1px #ffe281"></div>
+                        <div class="effect-name">Mirror</div>
+                    </div>
+                    <div class="effect" id="effect-inout">
+                        <div class="effect-img" style="box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000"></div>
+                        <div class="effect-name">In&Out</div>
+                    </div>
+                    <div class="effect" id="effect-gradient">
+                        <div class="effect-img" style="box-shadow: 0px 0px 0px 5px #A0A0A0, inset 0px 10px 27px -8px #141414, inset 0px -10px 27px -8px #A31925"></div>
+                        <div class="effect-name">Gradient</div>
+                    </div>
+                    <div class="effect" id="effect-pile">
+                        <div class="effect-img" style="box-shadow: 5px 5px 0px 0px rgb(237, 161, 40), 10px 10px 0px 0px rgb(255, 167, 95), 15px 15px 0px 0px rgb(255, 161, 161), 20px 20px 0px 0px rgb(255, 221, 202), 25px 25px 0px 0px rgb(255, 250, 225)"></div>
+                        <div class="effect-name">Pile</div>
+                    </div>
+                    <div class="effect" id="effect-rainbow">
+                        <div class="effect-img" style="box-shadow: 7px -5px 10px 0px #4B0082, 11px -9px 10px 0px #0000FF, 16px -14px 10px 0px #00FF00, 20px -17px 10px 0px #FFFF00, 24px -19px 10px 0px #FF7F00, 27px -23px 10px 0px #FF0000"></div>
+                        <div class="effect-name">Rainbow</div>
+                    </div>
+                    <div class="effect" id="effect-flames">
+                        <div class="effect-img" style="box-shadow: 4px -4px 15px 0px #FF1F1F, 12px -11px 7px 0px #FF9376, 20px -5px 7px 0px #FFE264, 20px 6px 7px 0px #F6FF33, 13px 12px 17px 0px #FF9527, 2px 17px 17px 0px #FF0000, -9px 21px 18px 0px #FFF212, -9px 6px 11px 0px #FF0808, -11px -9px 11px 0px #FFFA17, -11px -9px 11px 0px #FFFA17"></div>
+                        <div class="effect-name">Flames</div>
+                    </div>
+                    <div class="effect" id="effect-candy">
+                        <div class="effect-img" style="box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0)"></div>
+                        <div class="effect-name">Candy</div>
+                    </div>
+                    <div class="effect" id="effect-candle">
+                        <div class="effect-img" style="box-shadow: #ffffff 0 -1px 4px, #ffff00 0 -2px 10px, #ff8000 0 -10px 20px, red 0 -18px 40px, 5px 5px 15px 5px rgba(0,0,0,0);"></div>
+                        <div class="effect-name">Candle</div>
+                    </div>
+                    </div>
+                </div>
+                <div class="shadow-preview">
+                    <h1>SHADOW PREVIEW</h1>
+                    <div class="preview-box" id="shadow-preview-box"></div>
+                </div>
+            </div>
+            <div id="messages"></div>
+        </div>
+    </div>
+    <script src="hexToRGB.js"></script>
+    <script src="main.js"></script>
+    <script src="shadow.js"></script>
+    <script src="window.js"></script>
+    <script src="effects.js"></script>
+    <script src="tools/importShadow.js"></script>
+</body>
+</html>

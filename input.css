@@ -1,0 +1,77 @@
+input { margin: 0 15px; }
+input[type=range] {
+    -webkit-appearance: none;
+    height: 16px;
+    border-radius: 12px;
+    background: #242424;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 27px; width: 10px;
+    background-color: #ddd;
+    border-radius: 3px;
+}
+input[type=color] {
+    -webkit-appearance: none;
+	border: none;
+    height: 25px;
+    width: 125px;
+    border-radius: 7px;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 3px;
+}
+input[type=checkbox] {
+    -webkit-appearance: none;
+    position: relative;
+    height: 17px; width: 40px;
+    background-color: #242424;
+    border-radius: 15px;
+}
+input[type=checkbox]::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    height: 17px; width: 17px;
+    border-radius: 15px;
+    background-color: #ddd;
+    transition: 0.25s;
+}
+input[type=checkbox]:checked::before {
+    left: calc(100% - 17px);
+}
+input[type=number], input[type=text] {
+    color: inherit;
+    background-color: inherit;
+    border: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    width: 50px;
+}
+input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
+input[type=number]:focus, input[type=text]:focus { outline: 2px solid #ddd; }
+input[type=text] { width: 80px; }
+button {
+    border: 3px solid #383838;
+    border-radius: 5px;
+    padding: 5px 60px;
+    background-color: rgba(0,0,0,0);
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    transition: 0.15s;
+}
+button:hover {
+    cursor: pointer;
+    border: 3px solid #484848;
+}
+#button-copy {
+    position: absolute;
+    bottom: 30px; left: 30px;
+}
+#border-radius, #preview-width, #preview-height {
+    background-color: #101010;
+}
+#preview-width, #preview-height {
+    width: 200px;
+}

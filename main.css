@@ -1,0 +1,167 @@
+/* Box Shadow Generator CSS Style by Szymon Gniadek */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+body {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    background-color: #222;
+    font-family: 'Bebas Neue', cursive;
+    color: #fdfdfd;
+    letter-spacing: 1px;
+    font-size: 25px;
+    overflow-y: hidden;
+    user-select: none;
+}
+*::selection {
+   background-color: #fdfdfd;
+   color: black;
+}
+*::-webkit-scrollbar { -webkit-appearance: none; width: 11px; height: 11px; background-color: #1f1f1f; }
+*::-webkit-scrollbar-thumb { background-color: #111; border-radius: 25px; }
+.main {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+.bar {
+    width: 100%; height: 23px;
+    background-color: #404040;
+    display: flex;
+    text-align: center;
+    z-index: 50;
+    font-size: 22px;
+    height: 48px;
+}
+.logo {
+    margin: 12px 18px 0 15px;
+    height: 20px;
+    width: 30px;
+    background-color: #606060;
+    box-shadow: 3px 3px 5px 1px rgba(0,0,0,0.75);
+    transition: 0.2s;
+}
+.logo:hover { filter: brightness(110%); }
+.bar ol {
+    margin: 0;
+    transition: 0.2s;
+    cursor: pointer;
+    z-index: 1;
+    width: 180px;
+    padding: 10px 0;
+}
+.bar ol:hover { background-color: #505050; cursor: pointer; }
+.bar ol:hover ul { color: #fff; }
+.bar ol:hover ul { display: block; }
+.bar ol ul { 
+    list-style-type: none;
+	padding: 0;
+	margin: 8px 0 0 0;
+    height: 40px;
+    display: none;
+    font-size: 19px;
+}
+.bar ol ul li {
+    list-style-type: none;
+    border-bottom: 2px solid #ccc;
+    background-color: #393939;
+    padding: 10px;
+}
+.bar ol ul li:hover {
+    background-color: #404040;
+}
+.sidebar {
+    width: 370px; height: 100%;
+    padding: 0 30px;
+    background-color: #333;
+}
+.sidebar p { display: flex; align-items: center; width: 420px; }
+.sidebar p:last-child { width: 420px }
+.attr-name { width: 110px; }
+.count { margin-left: 8px; }
+.rightbar { width: 100%; }
+.toprightbar { display: flex; }
+.info {
+    position: relative;
+    width: 420px; height: 450px;
+    padding: 0 18px;
+    user-select: text;
+}
+.preview {
+    position: relative;
+    width: 600px; height: 450px;
+    background-color: #fff8ea;
+    overflow: hidden;
+    z-index: -5;
+    box-shadow: 0px 2px 34px 5px rgba(0,0,0,0.75);
+}
+.preview-settings {
+    padding: 0 18px;
+}
+.preview-box {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    height: 150px;
+    width: 190px;
+    background-color: #e2b00c;
+    box-shadow: 10px 10px 10px 5px rgba(0,0,0,0.75);
+}
+h1 { z-index: 3; }
+.preview h1, .info h1, .preview-settings h1, .shadow-preview h1 { margin: 5px 10px; color: black; opacity: 0.15;  z-index: 10; }
+.info h1, .preview-settings h1 { margin: 5px 0 0 0; color: white; user-select: none; }
+.effects h1 { margin: 0; opacity: 0.15; }
+.shadow-preview h1 { margin: 0; }
+.effects {
+    width: 72.5%; height: 460px;
+    padding: 10px 12px;
+    background-color: #292929;
+    overflow-y: scroll;
+    border-top: 6px solid #333;
+}
+.effects-list { display: grid; grid-template-columns: repeat(5, 1fr); margin-bottom: 65px; filter: brightness(65%); transition: 0.15s; }
+.effects-list:hover { filter: brightness(85%) }
+.effect {
+    min-height: 150px;
+    width: 150px;
+    margin: 15px;
+    transition: 0.15s linear;
+}
+.effect:hover {
+    cursor: pointer;
+    filter: brightness(85%);
+}
+.effect-img {
+    height: 120px;
+    width: inherit;
+    background-color: #e2b00c;
+}
+.effect-name { text-align: center; margin-top: 10px; }
+.shadow-preview {
+    position: relative;
+    width: 27.5%; height: 460px;
+    padding: 10px 12px;
+    background-color: #fff8ea;
+    box-shadow: inset 0px 0px 23px -5px rgba(0,0,0,0.75);
+}
+#messages {
+    position: absolute;
+    bottom: 50px; right: 50px;
+    text-align: center;
+}
+#messages div {
+    position: relative;
+    width: 550px;
+    padding: 0 20px;
+    background-color: #404040;
+    color: #fafafa;
+    box-shadow: 0px 2px 26px -5px rgba(0,0,0,0.5);
+    opacity: 0;
+    font-size: 0;
+    margin-top: 20px;
+    transition: all 0.35s;
+}
+#messages div i {
+    position: absolute;
+    top: 47%; left: 15px;
+    transform: translateY(-50%);
+}
