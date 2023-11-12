@@ -1,5 +1,5 @@
 # Box Shadow Generator
-This is advanced app to create box shadow in CSS.
+This is advanced app to create box shadow in CSS. The application was created in August 2021.
 ## Why the app is advanced?
 Opossite to other apps that can make box shadow in this app you can work with layers of box shadow.
 It means you can edit more than 1 shadow in one time and make amazing shadows simply.
