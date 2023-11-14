@@ -10,4 +10,4 @@ Of course the app have fundamental options like translate, spread, blur, opacity
 * There is a lot of prepared effect that you can use.
 * In nav bar you can choose tools. At this moment there is a one tool: **Import shadow** - As the name says you can import shadow from code in CSS.
 ## LIVE DEMO
-https://walorson.github.io/Box-shadow-generator/
+https://walorson.github.io/Box-Shadow-Generator/
