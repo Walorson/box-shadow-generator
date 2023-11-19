@@ -9,5 +9,6 @@ Of course the app have fundamental options like translate, spread, blur, opacity
 * You can change preview options like color of square and background, size and shape of square (you can change square into circle).
 * There is a lot of prepared effect that you can use.
 * In nav bar you can choose tools. At this moment there is a one tool: **Import shadow** - As the name says you can import shadow from code in CSS. (That option doesn't work properly xD)
+### One thing is not cool at this moment - there is no repsonsive, so if you don't have a page open in fullHD you might be confuse.
 ## LIVE DEMO
 https://walorson.github.io/Box-Shadow-Generator/
