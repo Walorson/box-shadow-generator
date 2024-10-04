@@ -39,9 +39,8 @@
 }
 #shadow-info {
     display: block;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
-    height: 230px;
 }
 .arrows {
     position: absolute;
