@@ -1,5 +1,7 @@
 const backgroundBlur = document.getElementById("background-blur");
-class Window {
+
+export class Window 
+{
     constructor(window,quitBtn,initBtn) {
         this.window = window;
         this.quitBtn = quitBtn;

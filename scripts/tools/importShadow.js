@@ -1,15 +1,38 @@
-const importShadow = new Window(document.getElementById("manualGenerator"),document.getElementById("manualGenerator").querySelector(".windowQuit"),document.getElementById("manualGeneratorInit"));
-importShadow.textarea = importShadow.window.querySelector("textarea");
-importShadow.generate = document.getElementById("mgGenerate");
-importShadow.info = "";
-importShadow.generate.onclick = () => {
-    importShadow.hide(); var char;
-    importShadow.info = "";
-    for(i=12; i<importShadow.textarea.value.length; i++) {
-        if(importShadow.textarea.value[i] == ";") char = "";
-        else char = importShadow.textarea.value[i];
-        importShadow.info += char;
+import { Window } from "../window.js";
+
+export function importShadow()
+{
+    const box = document.querySelector(".preview-box");
+    const importShadow = new Window(
+        document.getElementById("manualGenerator"),
+        document.getElementById("manualGenerator").querySelector(".windowQuit"),
+        document.getElementById("manualGeneratorInit")
+    );
+    
+    const textarea = importShadow.window.querySelector("textarea");
+    const generate = document.getElementById("mgGenerate");
+    let info = "";
+    
+    generate.onclick = () => {
+        importShadow.hide(); 
+        let char;
+        info = "";
+    
+        for(i=12; i<textarea.value.length; i++) 
+        {
+            if(textarea.value[i] == ";") 
+            {
+                char = "";
+            }
+            else 
+            {
+                char = textarea.value[i];
+            }
+    
+            info += char;
+        }
+        
+        box.style.boxShadow = info;
+        textarea.value = "box-shadow: ";
     }
-    box.style.boxShadow = importShadow.info;
-    importShadow.textarea.value = "box-shadow: ";
 }

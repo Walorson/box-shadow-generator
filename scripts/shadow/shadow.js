@@ -1,18 +1,22 @@
-const box = document.querySelector(".preview-box");
+import { createMainShadow } from "./createMainShadow.js";
+import { clearAllShadows } from "./clearAllShadows.js";
+import { addNewShadow } from "./addNewShadow.js";
+
 const shadowBox = document.getElementById("shadow-preview-box");
-const shadowList = document.getElementById("shadow-list");
+export const shadowList = document.getElementById("shadow-list");
 const clearBtn = document.getElementById("clear-shadow-list-button");
 const addShadowBtn = document.getElementById("add-shadow-button");
 const shadowOptions = document.getElementById("shadow-options");
 
-let shadows = [];
+export let shadows = [];
 const checkNumbersOfShadows = () => {
     if(shadows.length <= 0) {   
         shadowOptions.innerHTML = ''; 
         boxs.forEach(box => box.style.boxShadow = "0 0 0 0 rgba(0,0,0,0)");
     }
 }
-class Shadow {
+export class Shadow 
+{
     constructor() {
         this.id = 1;
         this.right = 10;
@@ -30,8 +34,22 @@ class Shadow {
         this.layer = shadows.length+1;
         this.shadowInfo = `${this.inset} ${this.right}px ${this.down}px ${this.blur}px ${this.spread}px rgba(${hexToRGB(this.color)},${this.opacity})`;
     }
-    createListItem() { shadowList.innerHTML += `<span id="shadow-list-item${this.id}" class="shadow-list-item"><span>Shadow #${this.id}</span><div class="remove">X</div><div class="arrows"><div class="upArrow"></div><div class="downArrow"></div></div></span>`; }
-    getElements() {
+
+    createListItem() 
+    { 
+        shadowList.innerHTML += `
+        <span id="shadow-list-item${this.id}" class="shadow-list-item">
+            <span>Shadow #${this.id}</span>
+            <div class="remove">X</div>
+            <div class="arrows">
+                <div class="upArrow"></div>
+                <div class="downArrow"></div>
+            </div>
+        </span>`; 
+    }
+    
+    getElements() 
+    {
         this.listMain = document.getElementById(`shadow-list-item${this.id}`);
         this.list = this.listMain.querySelector("span");
         this.quitBtn = this.listMain.querySelector("div");
@@ -106,7 +124,9 @@ class Shadow {
             }
         });
     }
-    goToEditMode() { 
+    
+    goToEditMode() 
+    { 
         for(let i=0; i<shadows.length; i++) { 
             shadows[i].editMode = false;
         }
@@ -146,12 +166,16 @@ class Shadow {
         });
         shadowBox.style.boxShadow = this.shadowInfo;
      }
-    createShadow() {
+    
+    createShadow() 
+    {
         this.shadowInfo = `${this.inset} ${this.right}px ${this.down}px ${this.blur}px ${this.spread}px rgba(${hexToRGB(this.color)},${this.opacity})`;
         shadowBox.style.boxShadow = this.shadowInfo;
         createMainShadow();
     }
-    setValues() {
+
+    setValues() 
+    {
         this.right = document.getElementById("right").value;
         this.down = document.getElementById("down").value;
         this.blur = document.getElementById("blur").value;
@@ -159,7 +183,9 @@ class Shadow {
         this.opacity = document.getElementById("opacity").value;
         this.color = document.getElementById("color").value;
     }
-    changeLayer() {
+
+    changeLayer() 
+    {
         const newShadows = [];
             for(let i=1; i<shadows.length+1; i++) {
                 for(let j=0; j<shadows.length; j++) {
@@ -181,58 +207,13 @@ class Shadow {
             createMainShadow();
     }
 }
-shadows.push(new Shadow); shadows[0].createListItem(); shadows[0].getElements(); shadows[0].goToEditMode(); //onload
-addShadowBtn.addEventListener("click",() => {
+
+window.addEventListener("load", () => {
     shadows.push(new Shadow);
-    if(shadows.length > 1) {
-        const s = shadows[shadows.length-2]; // s = poprzedni cień
-        const n = shadows[shadows.length-1]; // n = nowy cień
-        n.right = s.right;
-        n.down = s.down;
-        n.blur = s.blur;
-        n.spread = s.spread;
-        n.opacity = s.opacity;
-        n.inset = n.inset;
-        n.color = s.color;
-    }
-    createNewShadow();
-});
-clearBtn.addEventListener("click",() => {
-    shadowList.innerHTML = "";
-    shadows = []; shadows.push(new Shadow);
-    shadows[0].createListItem();
+    shadows[0].createListItem(); 
     shadows[0].getElements();
     shadows[0].goToEditMode();
-    createMainShadow();
 });
 
-let mainShadow = "";
-const createMainShadow = () => {
-    mainShadow = "";
-    for(let i=0; i<shadows.length; i++) {
-        mainShadow += shadows[i].shadowInfo+",";
-    }
-    mainShadow = mainShadow.replaceAt(mainShadow.length-1," ");
-    box.style.boxShadow = mainShadow;
-    document.getElementById("shadow-info").textContent = "box-shadow: "+mainShadow.replaceAt(mainShadow.length-1,";");
-}
-const createNewShadow = () => {
-    while(true) {
-        let busyId = false;
-        for(let i=0; i<shadows.length-1; i++) {
-            if(shadows[shadows.length-1].id == shadows[i].id) {
-                busyId = true; break;
-            }
-        }
-        if(busyId == true)
-            shadows[shadows.length-1].id++;
-        else
-            break;
-    }
-    shadows[shadows.length-1].createListItem();
-    shadows.forEach(shadow => { shadow.getElements(); });
-    shadows[shadows.length-1].goToEditMode();
-    shadows[shadows.length-1].setValues();
-    shadows[shadows.length-1].createShadow();
-    createMainShadow();
-}
+addShadowBtn.addEventListener("click", addNewShadow);
+clearBtn.addEventListener("click", clearAllShadows);
